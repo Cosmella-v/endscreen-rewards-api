@@ -30,8 +30,8 @@ bool EndscreenStats::init() {
     if (!Shaders::s_FadeEffect.isReady()) {
 		auto CCFileUtils = CCFileUtils::get();
 		if (CCFileUtils) {
-			auto vertPath = CCFileUtils->fullPathForFilename(Mod::get()->expandSpriteName("fade-vert.glsl").data(), false);
-			auto fragPath = CCFileUtils->fullPathForFilename(Mod::get()->expandSpriteName("fade-frag.glsl").data(), false);
+			std::string vertPath = CCFileUtils->fullPathForFilename(Mod::get()->expandSpriteName("fade-vert.glsl").data(), false);
+			std::string fragPath = CCFileUtils->fullPathForFilename(Mod::get()->expandSpriteName("fade-frag.glsl").data(), false);
 
 			auto vertSrc = file::readString(vertPath);
 			auto fragSrc = file::readString(fragPath);
