@@ -8,7 +8,7 @@
 	},
 	"id": "cosmella.endscreen-rewards",
 	"name": "Endscreen rewards",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "Cosmella",
 	"links": {"source": "https://github.com/Cosmella-v/endscreen-rewards-api"},
 	"api": {"include": [

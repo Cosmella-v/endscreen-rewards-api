@@ -74,7 +74,7 @@ void ESR_EndLevelLayer::customSetup() {
 		Stats->setID(ESR_StatsContainerID);
 		auto director = cocos2d::CCDirector::get();
 		auto size = director->getWinSize();
-		Stats->setPosition(size.width * .5 + 75,size.width*.5 - 178.5);
+		Stats->setPosition(size.width * .5 + 75,size.height*.5 - 60);
 		Stats->setAnchorPoint({0.5, 0.5});
 		Stats->setContentSize({90, 105});
 		Stats->m_endscreen = WeakRef<EndLevelLayer>(this);
