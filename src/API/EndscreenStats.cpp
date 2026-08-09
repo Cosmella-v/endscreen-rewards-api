@@ -60,22 +60,11 @@ void EndscreenStats::updateLayout() {
 };
 
 void EndscreenStats::addChild(cocos2d::CCNode *child) {
-	HandleNewChild(child);
-	if (m_init) {
-		m_contentLayer->CCNode::addChild(child);
-	} else {
-		CCNode::addChild(child);
-	}
+	return addChild(child, child->m_nZOrder, child->m_nTag);
 }
 
 void EndscreenStats::addChild(cocos2d::CCNode *child, int zOrder) {
-	HandleNewChild(child);
-
-	if (m_init) {
-		m_contentLayer->CCNode::addChild(child, zOrder);
-	} else {
-		CCNode::addChild(child, zOrder);
-	}
+	return addChild(child, zOrder, child->m_nTag);
 }
 
 void EndscreenStats::addChild(cocos2d::CCNode *child, int zOrder, int tag) {
@@ -88,7 +77,6 @@ void EndscreenStats::addChild(cocos2d::CCNode *child, int zOrder, int tag) {
 }
 
 void EndscreenStats::HandleNewChild(cocos2d::CCNode *child) {
-	log::debug("called");
 	if (m_alreadyRan) {
 		startAction(child);
 	};
