@@ -127,7 +127,6 @@ bool ShaderEffect::applyShader(
 
     glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);
     glViewport(0, 0, texW, texH);
-
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -135,8 +134,13 @@ bool ShaderEffect::applyShader(
     kmGLPushMatrix();
     kmMat4 ortho;
     kmMat4OrthographicProjection(&ortho, 0, size.width, 0, size.height, -1024, 1024);
-    kmGLLoadMatrix(&ortho);
-
+    #ifdef GEODE_IS_IOS
+        // ios middle finger I guess
+        kmGLLoadIdentity();
+        kmGLMultMatrix(&ortho);
+    #else
+        kmGLLoadMatrix(&ortho);
+    #endif
     kmGLMatrixMode(KM_GL_MODELVIEW);
     kmGLPushMatrix();
     kmGLLoadIdentity();

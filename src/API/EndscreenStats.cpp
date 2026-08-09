@@ -136,6 +136,7 @@ void EndscreenStats::startAction(CCNode *child) {
 void EndscreenStats::visit() {
     if (!isVisible()) return CCNode::visit();
     if (!Shaders::s_FadeEffect.applyShader(this, [this](CCNode* child){
+		// blocks the scrollbar from being drawn
         if(this->m_scrollbar != child) child->visit();
     }, [this](GLuint program) {
         /*register my own vars*/
@@ -144,6 +145,7 @@ void EndscreenStats::visit() {
         /*i really only need to call this if it fails*/
         CCNode::visit();
     } else {
+		/*Draws the scrollbar without the effect applied*/
         kmGLPushMatrix();
         CCNode::transform();
         if (m_scrollbar) m_scrollbar->visit();
@@ -162,8 +164,8 @@ $on_game(TexturesLoaded){
 	 if (!Shaders::s_FadeEffect.isReady()) {
 		auto CCFileUtils = CCFileUtils::get();
 		if (CCFileUtils) {
-			auto vertPath = CCFileUtils->fullPathForFilename(Mod::get()->expandSpriteName("fade-vert.glsl").data(), false);
-			auto fragPath = CCFileUtils->fullPathForFilename(Mod::get()->expandSpriteName("fade-frag.glsl").data(), false);
+			std::string vertPath = CCFileUtils->fullPathForFilename(Mod::get()->expandSpriteName("fade-vert.glsl").data(), false);
+			std::string fragPath = CCFileUtils->fullPathForFilename(Mod::get()->expandSpriteName("fade-frag.glsl").data(), false);
 
 			auto vertSrc = file::readString(vertPath);
 			auto fragSrc = file::readString(fragPath);
