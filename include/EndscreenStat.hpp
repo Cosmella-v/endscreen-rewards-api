@@ -13,10 +13,9 @@
 #define ESR_StatsContainerID "cosmella.endscreen-rewards/stat-container"
 #endif
 
-
-#define addSpawnEvent_FUNCTIONTYPE() geode::CopyableFunction<void(EndLevelLayer*, cocos2d::CCNode*, float)>
-
 namespace ESR {
+// type used for the SpawnEvent
+using addSpawnEvent = geode::CopyableFunction<void(EndLevelLayer*, cocos2d::CCNode*, float)>;
 /*
 Check if the mod is loaded
 */
@@ -38,8 +37,8 @@ namespace EndscreenStat {
         using GlobalEvent::GlobalEvent;
     };
 
-    inline cocos2d::CCNode* addSpawnEvent(cocos2d::CCNode* Object, addSpawnEvent_FUNCTIONTYPE() function) GEODE_EVENT_EXPORT_NORES(&addSpawnEvent, (Object, std::move(function)));
-	inline cocos2d::CCNode *create(cocos2d::CCNode *displayNode,int displayedNumber,  std::string nodeID = "", nullFloat spacing = nullptr, addSpawnEvent_FUNCTIONTYPE() spawnEvent = nullptr) {
+    inline cocos2d::CCNode* addSpawnEvent(cocos2d::CCNode* Object, ESR::addSpawnEvent function) GEODE_EVENT_EXPORT_NORES(&addSpawnEvent, (Object, std::move(function)));
+	inline cocos2d::CCNode *create(cocos2d::CCNode *displayNode,int displayedNumber,  std::string nodeID = "", nullFloat spacing = nullptr, ESR::addSpawnEvent spawnEvent = nullptr) {
 		auto newNode = cocos2d::CCNodeRGBA::create();
         newNode->setCascadeOpacityEnabled(true);
 		if (nodeID.empty()) {
@@ -88,6 +87,3 @@ class EndscreenStats : public CCNode {};
 #endif
 
 }; // namespace ESR
-#ifndef GEODE_DEFINE_EVENT_EXPORTS
-    #undef MYFUNCTIONTYPE
-#endif

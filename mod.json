@@ -8,7 +8,7 @@
 	},
 	"id": "cosmella.endscreen-rewards",
 	"name": "Endscreen rewards",
-	"version": "v1.0.1",
+	"version": "v1.0.2",
 	"developer": "Cosmella",
 	"links": {"source": "https://github.com/Cosmella-v/endscreen-rewards-api"},
 	"api": {"include": [
@@ -24,6 +24,14 @@
 	"description": "rewards on the endscreen api",
 	"dependencies": {
 		"geode.node-ids": ">=v1.23.3"
+	},
+	"settings": {
+		"shaderless" : {
+			"name": "Disable Shaders",
+			"type": "bool",
+			"default" : false,
+			"description": "Disables the use of shaders within the mod. <cr>Only use if your device cannot handle the opacity shader</c>"
+		}
 	},
 	"resources": {
 		"files": [

@@ -2,8 +2,8 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/EndLevelLayer.hpp>
 using namespace geode::prelude;
-#include "API/EndscreenStats.hpp"
-#include "API/EndLevelLayer.hpp"
+#include "API/EndLevelLayer/EndscreenStats.hpp"
+#include "API/EndLevelLayer/EndLevelLayer.hpp"
 // due to the fact we can't use the event thing in this mod i'd just make a macro for me
 #define EndscreenMacro(sprite, number,id, pad, function, zorder) {auto stat = ESR::EndscreenStat::create(sprite, number, id, pad); stat->addEventListener(ESR::HandleNode(stat), [](EndLevelLayer* EndlevelLayer, cocos2d::CCNode* StatNode, float AnimationDelay){function }, 0); statsMenu->addChild(stat); stat->setZOrder(zorder);}
 $on_mod(Loaded) {

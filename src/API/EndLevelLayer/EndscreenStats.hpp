@@ -2,13 +2,14 @@
 using namespace geode::prelude;
 #include <Geode/Geode.hpp> 
 #include <Geode/ui/ScrollLayer.hpp>
-#include "Shaders/ShaderEffect.hpp"
+#include "../Shaders/ShaderEffect.hpp"
 namespace ESR {
 class HandleNode : public geode::GlobalEvent<HandleNode, bool(EndLevelLayer*, cocos2d::CCNode*, float), cocos2d::CCNode*> {
 public:
     using GlobalEvent::GlobalEvent;
 };
 namespace Shaders {
+    static bool s_enabledShaders = false;
     static ShaderEffect s_FadeEffect;
 }
 class EndscreenStats : public geode::ScrollLayer {
@@ -37,7 +38,9 @@ class EndscreenStats : public geode::ScrollLayer {
         }; 
     private:
         Scrollbar* m_scrollbar = nullptr;
+        CCClippingNode* m_clip = nullptr;
         bool m_init = false;
+        bool m_hasShader = true;
         bool m_alreadyRan = false;
         bool m_cutContent = true;
         void HandleNewChild(cocos2d::CCNode* child);
