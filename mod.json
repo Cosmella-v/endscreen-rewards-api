@@ -1,5 +1,5 @@
 {
-	"geode": "5.8.2",
+	"geode": "5.9.0",
 	"gd": {
 		"win": "2.2081",
 		"android": "2.2081",
@@ -8,7 +8,7 @@
 	},
 	"id": "cosmella.endscreen-rewards",
 	"name": "Endscreen rewards",
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"developer": "Cosmella",
 	"links": {"source": "https://github.com/Cosmella-v/endscreen-rewards-api"},
 	"api": {"include": [

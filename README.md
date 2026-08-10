@@ -8,7 +8,7 @@ Make sure to declare Stats Display API as a dependency in your 'mod.json'
 "dependencies": {
 	"cosmella.endscreen-rewards": {
 			"required": true,
-			"version": ">=v1.0.2"
+			"version": ">=v1.0.3"
 		}
 }
 ```

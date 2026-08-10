@@ -51,9 +51,11 @@ void ESR_EndLevelLayer::showLayer(bool instant) {
 	EndLevelLayer::showLayer(instant);
 	bool trueInstant = instant || GameManager::get()->getGameVariable("0168");
 	if (auto Stats = typeinfo_cast<ESR::EndscreenStats *>(m_mainLayer->getChildByID(ESR_StatsContainerID))) {
-		Stats->delay = trueInstant ? 0.f : m_coinsToAnimate ? (m_coinsToAnimate->count() * 0.35f + 0.7f)
-		                                                    : 0.7;
+		Stats->delay = trueInstant ? 0.f : m_coinsToAnimate ? (m_coinsToAnimate->count() * 0.35f + 0.7f) : 0.7;
 		ESR::EndscreenStat::Endscreen(trueInstant).send((CCNode *)Stats, (EndLevelLayer *)this);
+		if (auto delayObject = typeinfo_cast<CCFloat*>(this->getUserObject("Animation-delay"_spr))){
+			Stats->delay += delayObject->getValue();
+		};
 		geode::Loader::get()->queueInMainThread([wfStats = geode::WeakRef<ESR::EndscreenStats>(Stats)] {
 			if (auto Stats = wfStats.lock()) {
 				Stats->runMostActions();
