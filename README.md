@@ -22,7 +22,7 @@ RECOMMENDED METHOD
 ```cpp
 $on_mod(Loaded) {
     // this event is fired whenever the statsMenu is added to the EndLevelLayer
-    ESR::EndscreenStat::Endscreen().listen([](cocos2d::CCNode* statsMenu, EndLevelLayer* endlayer){ 
+    ESR::EndscreenStat::Endscreen().listen([](cocos2d::CCNode* statsMenu, EndLevelLayer* endlayer){
         auto sprite = CCSprite::createWithSpriteFrameName("currencyOrbIcon_001.png"); /* scale your sprite */
         sprite->setScale(1.25);
 		auto stat = ESR::EndscreenStat::create(
@@ -46,7 +46,7 @@ $on_mod(Loaded) {
             5+ - FOR MODS
         */
 		statsMenu->addChild(stat, 1); 
-    });
+    }).leak();
 }
 ```
 
